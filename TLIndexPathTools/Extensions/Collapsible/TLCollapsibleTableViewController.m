@@ -98,6 +98,13 @@
 {
     TLCollapsibleHeaderView *headerView = (TLCollapsibleHeaderView *)sender.view;
     NSInteger section = headerView.section;
+    
+    if ([self.delegate respondsToSelector:@selector(shouldCollapseSection:)]) {
+        if (![self.delegate shouldCollapseSection:section]) {
+            return;
+        }
+    }
+    
     NSString *sectionName = [self.dataModel sectionNameForSection:section];
     NSMutableSet *collapsedSectionNames = [NSMutableSet setWithSet:self.dataModel.collapsedSectionNames];
     BOOL collapsed = NO;

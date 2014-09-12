@@ -29,6 +29,7 @@
 
 @protocol TLCollapsibleTableViewControllerDelegate <NSObject>
 @optional
+- (BOOL) shouldCollapseSection:(NSInteger) section;
 - (void)controller:(TLCollapsibleTableViewController *)controller didChangeSection:(NSInteger)section collapsed:(BOOL)collapsed;
 @end
 
